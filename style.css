@@ -1,0 +1,227 @@
+/* ===== Ғарыш әлемі: ортақ стиль (барлық беттерге) ===== */
+
+:root {
+  --bg: #0d1b2a;        /* негізгі фон */
+  --panel: #12263b;     /* блок фоны */
+  --line: #24476b;      /* жиек */
+  --text: #e0e6ed;      /* мәтін */
+  --muted: #9fb3c8;     /* қосымша мәтін */
+  --gold: #ffd166;      /* басты акцент */
+  --blue: #8ecae6;      /* тақырыптар */
+}
+
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  font-family: "Segoe UI", Arial, sans-serif;
+  line-height: 1.7;
+  color: var(--text);
+  background-color: var(--bg);
+  /* жұлдызды аспан */
+  background-image:
+    radial-gradient(1px 1px at 20px 30px, rgba(255,255,255,.85), transparent),
+    radial-gradient(1.5px 1.5px at 90px 80px, rgba(255,209,102,.85), transparent),
+    radial-gradient(1px 1px at 150px 150px, rgba(255,255,255,.6), transparent),
+    radial-gradient(ellipse at top, #1b3a57 0%, var(--bg) 65%);
+  background-size: 200px 200px, 260px 260px, 180px 180px, 100% 100%;
+  background-repeat: repeat, repeat, repeat, no-repeat;
+}
+
+.wrapper {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+a { color: var(--gold); }
+a:hover { color: #fff; }
+a:focus-visible, .nav a:focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; }
+
+/* ===== Навигация ===== */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: rgba(13, 27, 42, .92);
+  backdrop-filter: blur(6px);
+  border-bottom: 1px solid var(--line);
+}
+
+.nav {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 6px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.nav a {
+  text-decoration: none;
+  color: var(--text);
+  padding: 6px 14px;
+  border-radius: 999px;
+  font-size: 15px;
+  transition: background .2s, color .2s;
+}
+
+.nav a:hover { background: var(--line); }
+
+.nav a.active {
+  background: var(--gold);
+  color: var(--bg);
+  font-weight: 600;
+}
+
+/* ===== Беттің басты тақырыбы ===== */
+.title-box {
+  margin: 36px 0 28px;
+  padding: 36px 24px;
+  text-align: center;
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  background: linear-gradient(135deg, #16324d 0%, #0f2236 100%);
+}
+
+.title-box h1 {
+  margin: 0;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(28px, 5vw, 44px);
+  color: var(--gold);
+  line-height: 1.2;
+}
+
+.title-box p {
+  margin: 12px auto 0;
+  max-width: 560px;
+  color: var(--muted);
+}
+
+/* ===== Мәтін ===== */
+main { padding-bottom: 20px; }
+
+h2 {
+  margin: 40px 0 14px;
+  padding-left: 14px;
+  border-left: 4px solid var(--gold);
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 26px;
+  color: var(--blue);
+}
+
+p { max-width: 70ch; }
+
+ul, ol { padding-left: 22px; }
+li { margin-bottom: 6px; }
+
+hr { border: 0; border-top: 1px solid var(--line); margin: 36px 0; }
+
+img { max-width: 100%; }
+
+/* ===== Блоктар (карточкалар) ===== */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+  gap: 18px;
+}
+
+.card {
+  padding: 18px;
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+}
+
+.card h3 { margin: 0 0 6px; color: var(--gold); font-size: 19px; }
+.card p { margin: 0; color: var(--text); font-size: 15px; }
+
+a.card {
+  display: block;
+  text-decoration: none;
+  color: var(--text);
+  transition: transform .2s, border-color .2s;
+}
+a.card:hover { transform: translateY(-3px); border-color: var(--gold); }
+a.card .icon { font-size: 30px; display: block; margin-bottom: 6px; }
+
+.card img {
+  display: block;
+  width: 100%;
+  height: 210px;
+  object-fit: cover;
+  object-position: top;
+  border-radius: 12px;
+  margin-bottom: 12px;
+}
+
+.card.planet { display: flex; gap: 16px; align-items: center; }
+.card.planet img { width: 90px; height: 90px; margin: 0; object-fit: contain; flex-shrink: 0; }
+
+/* сурет + мәтін қатар */
+.split {
+  display: flex;
+  gap: 24px;
+  align-items: center;
+  padding: 18px;
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+}
+.split img { width: 280px; border-radius: 12px; flex-shrink: 0; }
+.split p { margin: 0; }
+.split.reverse { flex-direction: row-reverse; }
+
+.big-image { display: block; margin: 0 auto; max-width: 420px; width: 100%; border-radius: 15px; }
+
+/* қызықты дерек */
+.fact {
+  padding: 16px 18px;
+  background: var(--panel);
+  border-left: 4px solid var(--blue);
+  border-radius: 0 12px 12px 0;
+}
+
+/* ===== Хронология ===== */
+.timeline {
+  list-style: none;
+  margin: 0;
+  padding: 0 0 0 22px;
+  border-left: 2px solid var(--line);
+}
+.timeline li {
+  position: relative;
+  margin-bottom: 18px;
+  padding-left: 18px;
+}
+.timeline li::before {
+  content: "";
+  position: absolute;
+  left: -30px;
+  top: 9px;
+  width: 12px;
+  height: 12px;
+  background: var(--gold);
+  border-radius: 50%;
+  box-shadow: 0 0 0 4px var(--bg);
+}
+.timeline b { color: var(--gold); }
+
+/* ===== Төменгі бөлік ===== */
+.site-footer {
+  margin-top: 40px;
+  padding: 24px 20px;
+  text-align: center;
+  color: var(--muted);
+  border-top: 1px solid var(--line);
+}
+.site-footer p { margin: 4px auto; }
+
+/* ===== Телефон үшін ===== */
+@media (max-width: 700px) {
+  .split, .split.reverse { flex-direction: column; }
+  .split img { width: 100%; }
+  .title-box { padding: 26px 16px; }
+}
